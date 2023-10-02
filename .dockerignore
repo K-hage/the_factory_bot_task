@@ -162,5 +162,3 @@ cython_debug/
 #
 postgres_data/
 passwords.txt
-TODO.md
-.git/
