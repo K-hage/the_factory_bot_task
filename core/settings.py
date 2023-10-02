@@ -17,6 +17,7 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
 # Application definition
 MY_APPS = [
     'users',
+    'tg_bot',
 ]
 
 INSTALLED_APPS = [
@@ -134,3 +135,5 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     'POSTPROCESSING_HOOKS': []
 }
+
+TELEGRAM_BOT_TOKEN = env.str('TELEGRAM_BOT_TOKEN')
