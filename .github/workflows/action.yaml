@@ -52,8 +52,8 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             cd deploy
-            docker-compose down -v
-            docker-compose up --build -d
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S docker-compose down -v
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S docker-compose up --build -d
       - name: Clear after deploy
         if: always()
         uses: appleboy/ssh-action@master
@@ -62,4 +62,4 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
-            docker system prune -a -f
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S docker system prune -a -f
