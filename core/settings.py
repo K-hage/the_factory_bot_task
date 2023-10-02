@@ -27,13 +27,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
-    'drf_spectacular'
+    'drf_spectacular',
 ]
 
 INSTALLED_APPS += MY_APPS
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,8 +118,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#
 
+# CORS
+CORS_ALLOW_ALL_ORIGINS = True
+
+#
 AUTH_USER_MODEL = 'users.User'
 
 # rest framework
@@ -129,8 +134,8 @@ REST_FRAMEWORK = {
 # swagger
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Todolist API',
-    'DESCRIPTION': 'Awesome todolist project',
+    'TITLE': 'Factory Bot Task API',
+    'DESCRIPTION': 'Awesome factory bot tack project',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
     'POSTPROCESSING_HOOKS': []
