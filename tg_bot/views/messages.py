@@ -3,13 +3,12 @@ from rest_framework.permissions import IsAuthenticated
 
 from tg_bot.api_sender import send_message_to_telegram_sync
 from tg_bot.models import TgUser, Message
-from tg_bot.permissions import IsAuthorized
 from tg_bot.serializers import MessageSerializer, MessagesListSerializer
 
 
 class SendMessage(CreateAPIView):
     queryset = Message.objects.all()
-    permission_classes = [IsAuthorized]
+    permission_classes = [IsAuthenticated]
     serializer_class = MessageSerializer
 
     def create(self, request, *args, **kwargs):
